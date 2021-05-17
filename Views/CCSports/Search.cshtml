@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Search";
+}
+
+
+<h1>C&C Snow Sports | Search</h1>
+<br />
+<body>
+    <p>
+        <h5><strong>Still Searching?</strong></h5>
+        <br />
+    <p>
+        Now, if you already have a preference for either skiing and snowboarding, then you could narrow your <strong>Search</strong> here by
+        where it is you're going to ski/board most often. Different conditions will play a factor in the gear you use. For instance, if you're
+        near a large mountain range that gets lots of snowfall, you may want to opt for "powder" like conditions. Should you be
+        near a smaller local hill, all-mountain "groomer" style equipment will do the job. Fancy trying some tricks? The "park"
+        style eqiupment will do the trick!
+        <br /><br />
+        Or, perhaps you want to expand your "quiver" for multiple conditions! You can search by these popular criteria to find
+        exactly what you're looking for.
+    </p>
+</body>
+<br />
+<form asp-action="Search" method="get">
+    <div class="form-group row">
+        <div class="col-4">Sport:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input maxlength="20" type="text" name="searchSport" value="@ViewData["SportFilter"]" /></div>
+        <div class="col-4">Brand: <input maxlength="20" type="text" name="searchBrand" value="@ViewData["BrandFilter"]" /></div>
+        <div class="col-4">Model: <input maxlength="20" type="text" name="searchModel" value="@ViewData["ModelFilter"]" /></div>
+    </div>
+    <div class="form-group row">
+        <div class="col">Conditions: <input type="text" maxlength="20" name="conditions" value="@ViewData["ConditionsFilter"]" /></div>
+        @*<div class="col-4">*Gender: <input maxlength="10" type="text" name="searchGender" value="@ViewData["GenderFilter"]" /></div>*@
+        <div class="col">Min Price: &nbsp;&nbsp;<input type="number" min="0" max="1000" name="priceMin" value="@ViewData["PriceMinFilter"]" /></div>
+        <div class="col">Max Price: &nbsp;&nbsp;<input type="number" min="0" max="1000" name="priceMax" value="@ViewData["PriceMaxFilter"]" /></div>
+    </div>
+    <p>
+        <input type="submit" class="btn btn-outline-primary" />
+        <a asp-action="Search">Clear Search Criteria</a>
+    </p>
+</form>
+<br />
+<table class="table table-sm table-striped table-bordered">
+    <thead>
+        <tr>
+            <th style="width:18%">Product (Details)</th>
+            <th style="width:15%">Sport</th>
+            <th style="width:8%">Gender</th>
+            <th style="width:14%">Conditions</th>
+            <th style="width:12%">Price</th>
+            <th style="width:15%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>
+                    <a class="btn btn-outline-info btn-block" asp-action="Details" asp-route-id="@p.ProductId"> @Html.DisplayFor(modelItem => p.Brand) @Html.DisplayFor(modelItem => p.Model)</a>
+                </td>
+                <td class="align-middle">@p.Sport</td>
+                <td class="align-middle">@p.Gender</td>
+                <td class="align-middle">@p.Conditions</td>
+                <td class="align-middle">@p.UnitPrice</td>
+                <td class="align-middle">
+                    <a asp-action="AddToCart" asp-route-id="@p.ProductId" class="btn btn-primary btn-block">Add to Cart</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

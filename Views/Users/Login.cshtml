@@ -1,0 +1,54 @@
+﻿@model CC_Sports.Models.LoginInput
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Sign In Here</h1>
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success">@TempData["success"]</div>
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <input type="hidden" asp-for="ReturnURL" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="userName" class="control-label">User Name:</label>
+                <input asp-for="userName" class="form-control" />
+                <span asp-validation-for="userName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userPassword" class="control-label">Password:</label>
+                <input asp-for="userPassword" class="form-control" />
+                <span asp-validation-for="userPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign In" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (ViewData["message"] != null)
+{
+    <div class="alert alert-danger">
+        @ViewData["message"]
+    </div>
+}
+
+@if (!Context.User.Identity.IsAuthenticated)
+{
+    <div>
+        <a asp-action="SignUp" asp-controller="Users">Sign Up</a>
+    </div>
+}
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

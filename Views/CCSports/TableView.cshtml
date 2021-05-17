@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CC_Sports.Models.Product>
+@{
+    ViewData["Title"] = "TableView";
+}
+
+<h1>C&C Snow Sports | Product List</h1>
+<br />
+<body>
+    <p>
+        <h5><strong>Find your next gear here</strong></h5>
+        We may expand our assortment in the future if our professionals deam it worthy of C&C Sports, but until they pass the test,
+        <i>these</i> are the top tier products our shop stands behind. Luckily, we have something for everyone. Click on the 
+        <strong>Product Details</strong> to learn even more about what we carry.
+    </p>
+</body>
+<br />
+<br />
+<table class="table table-sm table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Product Details</th>
+            <th>Gender</th>
+            <th>Sport</th>
+            <th>Conditions</th>
+            <th>Unit Price</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>
+                    <a class="btn btn-outline-info btn-block" asp-action="Details" asp-route-id="@p.ProductId"> @Html.DisplayFor(modelItem => p.Brand) @Html.DisplayFor(modelItem => p.Model)</a>
+                </td>
+                <td>
+                    @p.Gender
+                </td>
+                <td>
+                    @p.Sport
+                </td>
+                <td>
+                    @p.Conditions
+                </td>
+                <td>
+                    <a class="badge badge-pill badge-warning text-dark text-xl-center"> @p.UnitPrice </a>
+                </td>
+                <td>
+                    <img src="~/images/@p.Image" height="130" width="80" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

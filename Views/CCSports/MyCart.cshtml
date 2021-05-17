@@ -1,0 +1,94 @@
+﻿@model Cart
+
+@{
+    ViewData["Title"] = "My Cart";
+}
+
+<h1>
+    @((!Context.User.Identity.IsAuthenticated) ? "C&C Snow Sports | Your Cart" : $"Your Cart -  {@Context.User.Identity.Name}")
+</h1>
+
+<br />
+<br />
+
+<p>
+    <a class="float-right" asp-action="Search" asp-controller="CCSports">Continue Shopping</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Product Detail
+            </th>
+            <th class="text-right">
+                Price
+            </th>
+            <th class="text-right">
+                Quantity
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CartItems())
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-controller="CCSports" asp-route-id="@item.Product.ProductId">@item.Product.Brand @item.Product.Model @item.Product.Sport</a>
+                </td>
+                <td class="text-right">
+                    @item.Product.UnitPrice
+                </td>
+
+                <td class="text-right">
+                    <form asp-action="UpdateCart" asp-controller="CCSports" method="post">
+                        <input type="hidden" value="@item.Product.ProductId" name="productID" />
+                        <input type="number" value="@item.Quantity" name="qty" size="2" required min="1" max="20" />
+                        <input type="submit" class="btn btn-sm btn-warning" value="Update Quantity" />
+                    </form>
+                </td>
+
+                @*<td class="text-right">
+                    @((item.Quantity * item.Product.UnitPrice))
+                </td>*@
+
+                <td>
+                    <form asp-action="RemoveFromCart" asp-controller="CCSports" method="post">
+                        <input type="hidden" value="@item.Product.ProductId" name="productID" />
+                        <input type="submit" class="btn btn-sm btn-danger" value="Remove Product" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5" class="text-right">
+                Order Total:
+            <!--</td>-->
+            @*<td>
+            @Model.ComputeOrderTotal().ToString("c")
+            </td>*@
+            <!--<td>-->
+                @Model.ComputeOrderTotal()
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<p>
+
+
+    @if (!Context.User.Identity.IsAuthenticated)
+    {
+
+        <a asp-action="CheckOut" asp-controller="Restrict" class="btn btn-primary btn-lg float-right">Check Out</a>
+    }
+    else
+    {
+        <a asp-action="PlaceOrder" asp-controller="Restrict" class="btn btn-primary btn-lg float-right">Place Order</a>
+    }
+</p>
+

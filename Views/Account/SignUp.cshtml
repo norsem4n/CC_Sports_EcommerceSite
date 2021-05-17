@@ -1,0 +1,51 @@
+﻿@model CC_Sports.Models.LoginInput
+
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<h1>Sign Up for an Account</h1>
+
+@* If username already exists*@
+
+@if (ViewData["message"] != null)
+{
+    <div class="alert alert-danger">@ViewData["message"]</div>
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SignUp" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="userName" class="control-label"></label>
+                <input asp-for="userName" class="form-control" />
+                <span asp-validation-for="userName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userPassword" class="control-label"></label>
+                <input asp-for="userPassword" class="form-control" />
+                <span asp-validation-for="userPassword" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>*@
+
+            <div class="form-group">
+                <input type="submit" value="Create Account" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Cancel</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

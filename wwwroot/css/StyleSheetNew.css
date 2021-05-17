@@ -1,0 +1,162 @@
+/*<!--
+Name: Christopher Karnas
+Last Modified: 3.21.21
+-->*/
+header, nav, section, article, footer {
+    display: block;
+}
+
+
+/* Body Layout */
+
+body {
+    width: 90%;
+    padding-left: 1%;
+    padding-right: 1%;
+    clear: none;
+    float: none;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+body {
+    background-color: ghostwhite;
+}
+
+    body header {
+        display: block;
+    }
+
+/* Header Layout */
+
+header {
+    box-sizing: border-box;
+}
+
+    header img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        display: block;
+    }
+
+/*.carousel-item {
+    height: 65vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}*/
+
+
+
+/* Navigation list */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #2a2c2f;
+    font-family: sans-serif;
+    font-size: large;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    
+}
+
+/* Change the link color on hover */
+li a:hover {
+    background-color: gainsboro;
+}
+
+/* Section styles */
+
+section {
+    border-right: 1px white;
+    float: none;
+    width: 50%;
+}
+
+/* Article styles */
+
+#SkiButton, #SnowButton {
+    display: inline-block;
+}
+
+#buttons {
+    text-align: center;
+}
+
+/*<style>
+.button {
+    height: 200px;
+    position: relative;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+</style>*/
+
+/*blockquote {
+    font-style: italic;
+    font-size: 17px;
+    text-align: center;
+}
+
+#quote {
+    font-size: 14px;
+    text-align: right;
+    padding-right: 200px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+
+#destination {
+    font-style: italic;
+    text-align: center;
+    color: darkblue;
+}*/
+
+article {
+    font-family: Garamond;
+    font-size: 20px;
+    padding-bottom: 100px;
+    color: 
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+    padding: 2px;
+}
+
+/* Footer styles */
+
+footer {
+    clear: left;
+    border-top: 1px solid black;
+    font-size: small;
+    text-align: right;
+    padding-bottom: 15px;
+}

@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to C&C Snow Sports</h1>
+    <img src="~/images/MainFour.png" width="100%" height="100%" />
+</div>
+<body>
+    <p>
+        <br />
+        <h4><strong>So you want to hit the slopes?</strong></h4> Great! There are multiple ways to enjoy the great outdoors come winter time!
+        If you've never tried either skiing or snowboarding, we can help you find the right gear. Some say <strong>Skiing</strong> is
+        easier to learn, but harder to master. It as also said that <strong>Snowboarding</strong> is harder to learn, but easier to master.
+        If you have a preference, go right to our products or search for what you want.
+    </p>
+    <p>
+        <h5><strong>But Which is For Me?</strong></h5>
+        There is no wrong answer! Some people try both out and may switch back-and-forth often. If you want to gain a better idea
+        of what each sport brings, proceed to explore more and you can get a better sense of which gear is right for you.
+    </p>
+    <div class="d-grid gap-2" id="buttons">
+        <a asp-controller="CCSports" asp-action="TableView" class="btn btn-primary">View Skiing &amp; Snowboarding Products</a>
+    </div>
+    <br />
+</body>

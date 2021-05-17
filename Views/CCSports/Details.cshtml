@@ -1,0 +1,81 @@
+﻿@*@model Product;*@
+@model CC_Sports.Models.Product
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Product Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(p => p.Brand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(p => p.Brand)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(p => p.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(p => p.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(p => p.Sport)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(p => p.Sport)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(p => p.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(p => p.Gender)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(p => p.Conditions)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(p => p.Conditions)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(p => p.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(p => p.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(p => p.Image)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/images/@Model.Image" height="390" width="240" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(p => p.UnitPrice)
+        </dt>
+        <d1 class="col-1 badge badge-pill badge-warning text-dark">
+            @Model.UnitPrice
+        </d1>
+
+
+        @*</dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CategoryFkNavigation)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CategoryFkNavigation.CategoryName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SubCategoryFkNavigation)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SubCategoryFkNavigation.SubCategoryName)
+            </dd>*@
+    </dl>
+</div>
+<div>
+    <a asp-action="AddToCart" asp-route-id="@Model.ProductId" class="btn btn-primary btn-lg">Add to Cart</a>
+    <br /><br />
+    <a asp-action="TableView">Back to Product List</a>
+</div>

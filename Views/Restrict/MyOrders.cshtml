@@ -1,0 +1,66 @@
+﻿@* WORK IN PROGRESS *@
+@model IEnumerable<Invoice>
+
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+@* check if there are orders*@
+
+@if (Model.Any())
+{
+    <h1>Orders for @Context.User.Identity.Name</h1>
+
+    <table class="table table-sm table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Order ID
+                </th>
+                <th>
+                    Order Date
+                </th>
+                <th>
+                    Product
+                </th>
+                <th class="text-right">
+                    Order Amount
+                </th>
+                <th class="text-right">
+                    Quantity
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="align-middle">
+                        @item.OrderIdfk
+                    </td>
+                    <td class="align-middle">
+                        @($"{item.OrderIdfkNavigation?.OrderDate:d}")
+                    </td>
+                    <td class="align-middle">
+                        @item.ProductIdfkNavigation.Brand @item.ProductIdfkNavigation.Model @item.ProductIdfkNavigation.Sport
+                    </td>
+                    <td class="text-right align-middle">
+                        @*@item.ProductIdfkNavigation.UnitPrice.ToString("c")*@
+                        @item.ProductIdfkNavigation.UnitPrice
+                    </td>
+                    <td class="text-right align-middle">
+                        @item.OrderQty
+                    </td>
+                    <td>
+                        <a asp-controller="Restrict" asp-action="DeleteOrder" class="btn btn-danger btn-block">Cancel Order</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+<h1>No orders for @Context.User.Identity.Name. Click <a asp-controller="CCSports" asp-action="TableView"> here</a> to return to products.</h1>
+}

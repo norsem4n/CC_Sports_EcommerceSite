@@ -1,0 +1,39 @@
+﻿@model CC_Sports.Models.Invoice
+
+@{
+    ViewData["Title"] = "DeleteOrder";
+}
+
+<h1>Cancel Order</h1>
+<br />
+<h3>Are you sure you want to cancel this order?</h3>
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderQty)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OrderQty)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderIdfkNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OrderIdfkNavigation.OrderId)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductIdfkNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProductIdfkNavigation.Brand)
+        </dd class>
+    </dl>
+    
+    <form asp-action="DeleteOrder">
+        <input type="hidden" asp-for="InvoiceId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-controller="Restrict" asp-action="MyOrders">Back to List</a>
+    </form>
+</div>
